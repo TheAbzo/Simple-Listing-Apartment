@@ -15,7 +15,8 @@
     "test:watch": "jest --watchAll",
     "lint": "eslint . --ext .ts,.js",
     "lint:fix": "eslint . --ext .ts,.js --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
