@@ -76,26 +76,37 @@ export type ListParams = {
 
 export const listApartments = async (params: ListParams) => {
   const { page = 1, limit = 10, q, project } = params;
-
   const skip = (page - 1) * limit;
 
-  const where: any = {};
-  if (q) where.unitName = { contains: q, mode: 'insensitive' };
-  if (project) where.project = { name: project };
+  const where: Prisma.ApartmentWhereInput = {};
+
+  if (q) {
+    where.OR = [
+      { unitName: { contains: q, mode: 'insensitive' } },
+      { unitNumber: { contains: q, mode: 'insensitive' } },
+      { project: { name: { contains: q, mode: 'insensitive' } } }
+    ];
+  }
+
+  if (project) {
+    where.project = { name: { equals: project, mode: 'insensitive' } };
+  }
 
   const apartments = await prisma.apartment.findMany({
     skip,
     take: limit,
     where,
-    orderBy: { createdAt: 'desc' }
+    orderBy: { createdAt: 'desc' },
+    include: { project: true },
   });
 
   return {
     data: apartments,
     page,
-    limit
+    limit,
   };
 };
+
 
 export const findApartmentById = async (id: string) => {
   return prisma.apartment.findUnique({ where: { id }, include: { project: true } });

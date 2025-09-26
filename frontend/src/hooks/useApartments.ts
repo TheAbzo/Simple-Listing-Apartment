@@ -1,33 +1,39 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { getApartments } from '../services/apartment.service';
-import { Apartment } from '../types/apartment';
+import { useEffect, useState } from "react";
+import { getApartments } from "../services/apartment.service";
+import { Apartment } from "../types/apartment";
 
-export const useApartments = (limit = 10) => {
+export function useApartments(limit: number) {
   const [apartments, setApartments] = useState<Apartment[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [loading, setLoading] = useState(false);
-
-  const fetchMore = async () => {
-    if (loading || !hasMore) return;
-    setLoading(true);
-
-    const data = await getApartments(page, limit);
-    setApartments(prev => [...prev, ...data.data]);
-    setPage(prev => prev + 1);
-
-    if (apartments.length + data.data.length >= data.total) {
-      setHasMore(false);
-    }
-
-    setLoading(false);
-  };
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetchMore();
-  }, []);
+    setPage(1);
+    fetchMore(true, 1); // pass page explicitly
+  }, [search]);
 
-  return { apartments, fetchMore, hasMore, loading };
-};
+  const fetchMore = async (reset = false, pageToFetch?: number) => {
+    const currentPage = pageToFetch ?? page;
+    const data = await getApartments(currentPage, limit, search);
+
+    if (reset) {
+      setApartments(data.data);
+      setPage(2); // next page will be 2
+    } else {
+      setApartments((prev) => [...prev, ...data.data]);
+      setPage((prev) => prev + 1);
+    }
+
+    setHasMore(data.data.length === limit);
+  };
+
+  return {
+    apartments,
+    fetchMore,
+    hasMore,
+    setSearch,
+  };
+}
