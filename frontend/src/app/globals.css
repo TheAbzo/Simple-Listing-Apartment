@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary-color: #3B82F6;       /* Buttons / Highlights */
+  --card-background: #FFFFFF;      /* Card / Page Background */
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --text-main: #111827;            /* Dark gray / almost black */
+  --text-secondary: #6B7280;       /* Medium gray */
+  --border-radius: 0.5rem;
+}
+
+body {
+  background-color: var(--card-background);
+  color: var(--text-main);
+  font-family: system-ui, sans-serif;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--card-background);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}

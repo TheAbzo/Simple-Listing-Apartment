@@ -17,11 +17,17 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1>Apartments</h1>
+      <h1>Apartments Listing</h1>
 
-      <AddApartmentModal onAdded={handleAdd} />
+      <div className={styles.topRow}>
+        <div className={styles.searchWrapper}>
+          <SearchBar onSearch={(q) => setSearch(q)} />
+        </div>
 
-      <SearchBar onSearch={(q) => setSearch(q)} />
+        <div className={styles.buttonWrapper}>
+          <AddApartmentModal onAdded={handleAdd} />
+        </div>
+      </div>
 
       <InfiniteScroll
         dataLength={apartments.length}
@@ -29,6 +35,7 @@ export default function Home() {
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}
         endMessage={<p>No more apartments</p>}
+        className={styles.infiniteScroll}
       >
         <div className={styles.grid}>
           {apartments.map((a) => (
@@ -36,6 +43,6 @@ export default function Home() {
           ))}
         </div>
       </InfiniteScroll>
-    </div>
+</div>
   );
 }
