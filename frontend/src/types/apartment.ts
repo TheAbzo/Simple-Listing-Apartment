@@ -17,7 +17,6 @@ export interface Apartment {
   bathrooms: number;
   area: number;
   description?: string | null;
-  // Prisma Json → backend will return array/object
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   images: any;
   createdAt: string;

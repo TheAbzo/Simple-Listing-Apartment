@@ -1,4 +1,4 @@
-import { fetchApartment } from '@/lib/api';
+import { getApartmentById } from '@/services/apartment.service';
 import { Apartment } from '@/types/apartment';
 import Image from 'next/image';
 import styles from './details.module.scss';
@@ -9,7 +9,7 @@ interface ApartmentPageProps {
 }
 
 export default async function ApartmentDetails({ params }: ApartmentPageProps) {
-  const apartment: Apartment = await fetchApartment(params.id);
+  const apartment: Apartment = await getApartmentById(params.id);
 
   const plural = (count: number, singular: string, plural?: string) =>
     count === 1 ? singular : plural || singular + 's';
@@ -20,7 +20,7 @@ export default async function ApartmentDetails({ params }: ApartmentPageProps) {
         <Image
           src={'/images/apartment.jpg'}
           alt={apartment.unitName}
-          width={320} // slightly bigger
+          width={320}
           height={320}
           className={styles.image}
         />

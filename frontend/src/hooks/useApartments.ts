@@ -12,7 +12,8 @@ export function useApartments(limit: number) {
 
   useEffect(() => {
     setPage(1);
-    fetchMore(true, 1); // pass page explicitly
+    fetchMore(true, 1); 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   const fetchMore = async (reset = false, pageToFetch?: number) => {
@@ -21,7 +22,7 @@ export function useApartments(limit: number) {
 
     if (reset) {
       setApartments(data.data);
-      setPage(2); // next page will be 2
+      setPage(2);
     } else {
       setApartments((prev) => [...prev, ...data.data]);
       setPage((prev) => prev + 1);

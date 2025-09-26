@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { Modal, Button, Form, Input, InputNumber } from 'antd';
-import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { Apartment } from '@/types/apartment';
+import { createApartment } from '@/services/apartment.service';
+import styles from './addApartmentModal.module.scss';
 
 interface Props {
   onAdded: (newApartment: Apartment) => void;
@@ -20,9 +21,9 @@ export default function AddApartmentModal({ onAdded }: Props) {
       const values = await form.validateFields();
       setLoading(true);
 
-      const response = await axios.post<Apartment>('http://localhost:4000/api/apartments', values);
+    const newApartment = await createApartment(values);
 
-      onAdded(response.data);
+      onAdded(newApartment);
       setOpen(false);
       form.resetFields();
       toast.success('Apartment added successfully!');
@@ -68,19 +69,19 @@ export default function AddApartmentModal({ onAdded }: Props) {
           </Form.Item>
 
           <Form.Item name="price" label="Price" rules={[{ required: true }]}>
-            <InputNumber style={{ width: '100%' }} />
+            <InputNumber className={styles.fullWidthInput} />
           </Form.Item>
 
           <Form.Item name="bedrooms" label="Bedrooms" rules={[{ required: true }]}>
-            <InputNumber style={{ width: '100%' }} />
+            <InputNumber className={styles.fullWidthInput} />
           </Form.Item>
 
           <Form.Item name="bathrooms" label="Bathrooms" rules={[{ required: true }]}>
-            <InputNumber style={{ width: '100%' }} />
+            <InputNumber className={styles.fullWidthInput} />
           </Form.Item>
 
           <Form.Item name="area" label="Area (sqm)" rules={[{ required: true }]}>
-            <InputNumber style={{ width: '100%' }} />
+            <InputNumber className={styles.fullWidthInput} />
           </Form.Item>
 
           <Form.Item name="description" label="Description">
