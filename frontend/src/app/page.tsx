@@ -16,33 +16,37 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
-      <h1>Apartments Listing</h1>
+<div className={styles.container}>
+  <h1>Apartments Listing</h1>
 
-      <div className={styles.topRow}>
-        <div className={styles.searchWrapper}>
-          <SearchBar onSearch={(q) => setSearch(q)} />
-        </div>
+  <div className={styles.topRow}>
+    <div className={styles.searchWrapper}>
+      <SearchBar onSearch={(q) => setSearch(q)} />
+    </div>
 
-        <div className={styles.buttonWrapper}>
-          <AddApartmentModal onAdded={handleAdd} />
-        </div>
+    <div className={styles.buttonWrapper}>
+      <AddApartmentModal onAdded={handleAdd} />
+    </div>
+  </div>
+
+  {apartments.length === 0 ? (
+    <p className={styles.noApartments}>No apartments available</p>
+  ) : (
+    <InfiniteScroll
+      dataLength={apartments.length}
+      next={fetchMore}
+      hasMore={hasMore}
+      loader={<h4>Loading...</h4>}
+      className={styles.infiniteScroll}
+    >
+      <div className={styles.grid}>
+        {apartments.map((a,index) => (
+          <ApartmentCard key={`${a.id}-${index}`} apartment={a} />
+        ))}
       </div>
-
-      <InfiniteScroll
-        dataLength={apartments.length}
-        next={fetchMore}
-        hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-        endMessage={<p>No more apartments</p>}
-        className={styles.infiniteScroll}
-      >
-        <div className={styles.grid}>
-          {apartments.map((a) => (
-            <ApartmentCard key={a.id} apartment={a} />
-          ))}
-        </div>
-      </InfiniteScroll>
+    </InfiniteScroll>
+  )}
 </div>
+
   );
 }

@@ -13,7 +13,7 @@
     transition: border-color 0.2s ease;
 
     &:focus {
-      border-color: #1677ff; // AntD primary blue
+      border-color: #1677ff; 
       box-shadow: 0 0 4px rgba(22, 119, 255, 0.3);
     }
   }
