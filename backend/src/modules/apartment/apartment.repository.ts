@@ -36,43 +36,9 @@ export const createApartment = async (data: {
 export type ListParams = {
   limit?: number;
   page?: number;
-  cursor?: string;
   q?: string;
   project?: string;
 };
-
-// export const listApartments = async (params: ListParams) => {
-//   const limit = params.limit ?? 12;
-//   const where: Prisma.ApartmentWhereInput = {};
-
-//   if (params.q) {
-//     where.OR = [
-//       { unitName: { contains: params.q, mode: 'insensitive' } },
-//       { unitNumber: { contains: params.q, mode: 'insensitive' } },
-//       { project: { name: { contains: params.q, mode: 'insensitive' } } }
-//     ];
-//   }
-
-//   if (params.project) {
-//     where.project = { name: params.project };
-//   }
-
-//   if (params.cursor) {
-//     // cursor is ISO string of createdAt -> fetch items older than cursor in descending order
-//     (where as any).createdAt = { lt: new Date(params.cursor) };
-//   }
-
-//   const items = await prisma.apartment.findMany({
-//     where,
-//     orderBy: { createdAt: 'desc' },
-//     take: limit,
-//     include: { project: true }
-//   });
-
-//   const nextCursor = items.length ? items[items.length - 1].createdAt.toISOString() : null;
-
-//   return { data: items, nextCursor };
-// };
 
 export const listApartments = async (params: ListParams) => {
   const { page = 1, limit = 10, q, project } = params;
