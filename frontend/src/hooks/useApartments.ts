@@ -35,5 +35,7 @@ export function useApartments(limit: number) {
     fetchMore,
     hasMore,
     setSearch,
+    setApartments,
+    setPage
   };
 }

@@ -8,12 +8,11 @@ import AddApartmentModal from "../components/AddApartmentModal";
 import styles from "./index.module.scss";
 
 export default function Home() {
-  const { apartments, fetchMore, hasMore, setSearch } = useApartments(10);
+  const { apartments, fetchMore, hasMore, setSearch, setApartments, setPage } = useApartments(10);
 
   const handleAdd = (newApartment: typeof apartments[0]) => {
-    // Add new apartment to the top of the list
-    apartments.unshift(newApartment);
-    fetchMore(true); // or trigger a reset if you want
+     setApartments((prev) => [newApartment, ...prev]);
+     setPage(1); 
   };
 
   return (
