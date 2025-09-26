@@ -4,10 +4,10 @@
 
 :root {
   --primary-color: #3b82f6;
-  --card-background: #ffffff; 
+  --card-background: #ffffff;
   --card-shadow: rgba(0, 0, 0, 0.05);
-  --text-main: #111827; 
-  --text-secondary: #6b7280; 
+  --text-main: #111827;
+  --text-secondary: #6b7280;
   --border-radius: 0.5rem;
 }
 

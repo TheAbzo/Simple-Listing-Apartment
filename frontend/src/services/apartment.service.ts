@@ -25,9 +25,7 @@ export const getApartmentById = async (id: string): Promise<Apartment> => {
   return response.data;
 };
 
-export const createApartment = async (
-  data: CreateApartmentInput
-): Promise<Apartment> => {
+export const createApartment = async (data: CreateApartmentInput): Promise<Apartment> => {
   const response = await axios.post<Apartment>(API_URL, data);
   return response.data;
 };

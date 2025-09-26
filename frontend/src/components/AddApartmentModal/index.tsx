@@ -21,7 +21,7 @@ export default function AddApartmentModal({ onAdded }: Props) {
       const values = await form.validateFields();
       setLoading(true);
 
-    const newApartment = await createApartment(values);
+      const newApartment = await createApartment(values);
 
       onAdded(newApartment);
       setOpen(false);

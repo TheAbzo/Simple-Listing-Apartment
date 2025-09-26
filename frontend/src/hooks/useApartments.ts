@@ -12,8 +12,8 @@ export function useApartments(limit: number) {
 
   useEffect(() => {
     setPage(1);
-    fetchMore(true, 1); 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchMore(true, 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   const fetchMore = async (reset = false, pageToFetch?: number) => {

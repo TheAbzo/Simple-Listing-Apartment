@@ -5,11 +5,12 @@ import styles from './details.module.scss';
 import BackButton from '@/components/BackComponent';
 
 interface ApartmentPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function ApartmentDetails({ params }: ApartmentPageProps) {
-  const apartment: Apartment = await getApartmentById(params.id);
+  const { id } = await params;
+  const apartment: Apartment = await getApartmentById(id);
 
   const plural = (count: number, singular: string, plural?: string) =>
     count === 1 ? singular : plural || singular + 's';
