@@ -11,7 +11,7 @@ async function main() {
     'City Center Residences',
     'Green Heights',
     'River Side Complex',
-    'Sunset Villas'
+    'Sunset Villas',
   ];
 
   console.log('Creating projects...');
@@ -20,8 +20,8 @@ async function main() {
     const p = await prisma.project.create({
       data: {
         name,
-        location: faker.location.city()
-      }
+        location: faker.location.city(),
+      },
     });
     projects.push(p);
   }
@@ -47,10 +47,7 @@ async function main() {
         bathrooms: faker.number.int({ min: 1, max: 3 }),
         area: faker.number.int({ min: 40, max: 300 }),
         description: faker.lorem.paragraph(),
-        images: [
-          faker.image.url(),
-          faker.image.url()
-        ]
+        images: [faker.image.url(), faker.image.url()],
       };
 
       batchPromises.push(prisma.apartment.create({ data: aptData }));

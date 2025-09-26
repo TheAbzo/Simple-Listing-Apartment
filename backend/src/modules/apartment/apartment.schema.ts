@@ -9,7 +9,7 @@ export const createApartmentSchema = z.object({
   bathrooms: z.number().int().nonnegative(),
   area: z.number().nonnegative(),
   description: z.string().optional(),
-  images: z.array(z.string().url()).optional()
+  images: z.array(z.string().url()).optional(),
 });
 
 export type CreateApartmentInput = z.infer<typeof createApartmentSchema>;

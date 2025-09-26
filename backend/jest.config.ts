@@ -4,6 +4,6 @@ export default {
   testTimeout: 20000,
   setupFilesAfterEnv: ['./tests/setup.ts'],
   transform: {
-    '^.+\\.ts?$': 'ts-jest'
-  }
+    '^.+\\.ts?$': 'ts-jest',
+  },
 };

@@ -21,7 +21,7 @@ export const createApartmentService = async (input: {
     bathrooms: input.bathrooms,
     area: input.area,
     description: input.description,
-    images: input.images
+    images: input.images,
   });
   return created;
 };

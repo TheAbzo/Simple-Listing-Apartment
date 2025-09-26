@@ -28,15 +28,15 @@ export const createApartment = async (data: {
       bathrooms: data.bathrooms,
       area: data.area,
       description: data.description ?? null,
-      images: data.images ?? []
-    }
+      images: data.images ?? [],
+    },
   });
 };
 
 export type ListParams = {
   limit?: number;
-  page?: number;       
-  cursor?: string;    
+  page?: number;
+  cursor?: string;
   q?: string;
   project?: string;
 };
@@ -84,7 +84,7 @@ export const listApartments = async (params: ListParams) => {
     where.OR = [
       { unitName: { contains: q, mode: 'insensitive' } },
       { unitNumber: { contains: q, mode: 'insensitive' } },
-      { project: { name: { contains: q, mode: 'insensitive' } } }
+      { project: { name: { contains: q, mode: 'insensitive' } } },
     ];
   }
 
@@ -106,7 +106,6 @@ export const listApartments = async (params: ListParams) => {
     limit,
   };
 };
-
 
 export const findApartmentById = async (id: string) => {
   return prisma.apartment.findUnique({ where: { id }, include: { project: true } });
