@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id         String      @id @default(uuid())
+  name       String      @unique
+  location   String?
+  apartments Apartment[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
+model Apartment {
+  id          String   @id @default(uuid())
+  unitName    String
+  unitNumber  String
+  project     Project  @relation(fields: [projectId], references: [id])
+  projectId   String
+  price       Float
+  bedrooms    Int
+  bathrooms   Int
+  area        Float
+  description String?
+  images      Json   
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([unitName])
+  @@index([unitNumber])
+  @@index([projectId])
+}

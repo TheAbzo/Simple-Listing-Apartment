@@ -1,0 +1,102 @@
+import prisma from '../../prismaClient';
+import { Prisma } from '@prisma/client';
+
+export const createProjectIfNotExists = async (name: string) => {
+  const existing = await prisma.project.findUnique({ where: { name } });
+  if (existing) return existing;
+  return prisma.project.create({ data: { name } });
+};
+
+export const createApartment = async (data: {
+  unitName: string;
+  unitNumber: string;
+  projectId: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  area: number;
+  description?: string;
+  images?: string[];
+}) => {
+  return prisma.apartment.create({
+    data: {
+      unitName: data.unitName,
+      unitNumber: data.unitNumber,
+      projectId: data.projectId,
+      price: data.price,
+      bedrooms: data.bedrooms,
+      bathrooms: data.bathrooms,
+      area: data.area,
+      description: data.description ?? null,
+      images: data.images ?? []
+    }
+  });
+};
+
+export type ListParams = {
+  limit?: number;
+  page?: number;       
+  cursor?: string;    
+  q?: string;
+  project?: string;
+};
+
+// export const listApartments = async (params: ListParams) => {
+//   const limit = params.limit ?? 12;
+//   const where: Prisma.ApartmentWhereInput = {};
+
+//   if (params.q) {
+//     where.OR = [
+//       { unitName: { contains: params.q, mode: 'insensitive' } },
+//       { unitNumber: { contains: params.q, mode: 'insensitive' } },
+//       { project: { name: { contains: params.q, mode: 'insensitive' } } }
+//     ];
+//   }
+
+//   if (params.project) {
+//     where.project = { name: params.project };
+//   }
+
+//   if (params.cursor) {
+//     // cursor is ISO string of createdAt -> fetch items older than cursor in descending order
+//     (where as any).createdAt = { lt: new Date(params.cursor) };
+//   }
+
+//   const items = await prisma.apartment.findMany({
+//     where,
+//     orderBy: { createdAt: 'desc' },
+//     take: limit,
+//     include: { project: true }
+//   });
+
+//   const nextCursor = items.length ? items[items.length - 1].createdAt.toISOString() : null;
+
+//   return { data: items, nextCursor };
+// };
+
+export const listApartments = async (params: ListParams) => {
+  const { page = 1, limit = 10, q, project } = params;
+
+  const skip = (page - 1) * limit;
+
+  const where: any = {};
+  if (q) where.unitName = { contains: q, mode: 'insensitive' };
+  if (project) where.project = { name: project };
+
+  const apartments = await prisma.apartment.findMany({
+    skip,
+    take: limit,
+    where,
+    orderBy: { createdAt: 'desc' }
+  });
+
+  return {
+    data: apartments,
+    page,
+    limit
+  };
+};
+
+export const findApartmentById = async (id: string) => {
+  return prisma.apartment.findUnique({ where: { id }, include: { project: true } });
+};
