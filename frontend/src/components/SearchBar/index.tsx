@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Input, Space, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
@@ -8,10 +9,10 @@ interface Props {
 }
 
 export default function SearchBar({ onSearch }: Props) {
-  let query = "";
+  const [query, setQuery] = useState(""); 
 
   const handleSearch = () => {
-    onSearch(query);
+    onSearch(query); 
   };
 
   return (
@@ -19,8 +20,9 @@ export default function SearchBar({ onSearch }: Props) {
       <Input
         placeholder="Search by name, unit number, or project..."
         prefix={<SearchOutlined />}
-        onChange={(e) => (query = e.target.value)}
-        onPressEnter={handleSearch} 
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onPressEnter={handleSearch}
         style={{ width: 300 }}
       />
       <Button type="primary" onClick={handleSearch}>
