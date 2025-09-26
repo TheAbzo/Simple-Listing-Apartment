@@ -1,5 +1,9 @@
 .container {
   padding: 2rem;
+
+  @media (max-width: 640px) {
+    padding: 1rem;
+  }
 }
 
 .topRow {
@@ -7,12 +11,23 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 4.5rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 2rem;
+  }
 }
 
 .searchWrapper {
   flex: 1;
   max-width: 500px;
-  margin-right: 1rem; 
+  margin-right: 1rem;
+
+  @media (max-width: 640px) {
+    margin-right: 0;
+  }
 }
 
 .buttonWrapper {
@@ -23,6 +38,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .infiniteScroll {
@@ -34,4 +53,9 @@
   color: var(--text-secondary);
   font-size: 1.25rem;
   margin-top: 2rem;
+
+  @media (max-width: 640px) {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
 }

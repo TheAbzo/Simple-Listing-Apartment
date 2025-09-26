@@ -2,36 +2,39 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 
   input {
     flex: 1;
     padding: 0.6rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid #d1d5db; 
+    border-radius: var(--border-radius);
     font-size: 0.95rem;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
     &:focus {
-      border-color: #1677ff; 
-      box-shadow: 0 0 4px rgba(22, 119, 255, 0.3);
+      border-color: var(--primary-color);
+      box-shadow: 0 0 4px rgba(59, 130, 246, 0.3);
     }
   }
 
   button {
     padding: 0.6rem 1.2rem;
     border: none;
-    border-radius: 8px;
-    background-color: #1677ff;
-    color: #fff;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: var(--card-background);
     font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, opacity 0.2s ease;
 
     &:hover {
-      background-color: #125ac4;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      width: 100%;
     }
   }
 }
-
-//todo remove or edit

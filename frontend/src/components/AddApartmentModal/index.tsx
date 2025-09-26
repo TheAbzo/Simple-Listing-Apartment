@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Modal, Button, Form, Input, InputNumber } from "antd";
 import axios from "axios";
-import { toast } from "react-hot-toast"; // <-- import toast
+import { toast } from "react-hot-toast";
 import { Apartment } from "@/types/apartment";
 
 interface Props {
@@ -28,13 +28,13 @@ export default function AddApartmentModal({ onAdded }: Props) {
       onAdded(response.data);
       setOpen(false);
       form.resetFields();
-      toast.success("Apartment added successfully!"); // <-- success toast
+      toast.success("Apartment added successfully!");
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       console.error(error);
       toast.error(
         error?.response?.data?.error?.message ||
-          "Failed to add apartment. Please try again." // <-- error toast
+        "Failed to add apartment. Please try again."
       );
     } finally {
       setLoading(false);
@@ -46,17 +46,22 @@ export default function AddApartmentModal({ onAdded }: Props) {
       <Button
         type="primary"
         onClick={() => setOpen(true)}
-        style={{ marginBottom: "1rem" }}
       >
         Add Apartment
       </Button>
+
       <Modal
         title="Add Apartment"
         open={open}
         onOk={handleSubmit}
         onCancel={() => setOpen(false)}
         confirmLoading={loading}
-      >
+        centered
+        okText="OK"
+        cancelText="Cancel"
+        width={500} 
+        >
+
         <Form form={form} layout="vertical">
           <Form.Item
             name="unitName"
@@ -65,6 +70,7 @@ export default function AddApartmentModal({ onAdded }: Props) {
           >
             <Input />
           </Form.Item>
+
           <Form.Item
             name="unitNumber"
             label="Unit Number"
@@ -72,6 +78,7 @@ export default function AddApartmentModal({ onAdded }: Props) {
           >
             <Input />
           </Form.Item>
+
           <Form.Item
             name="projectName"
             label="Project Name"
@@ -79,9 +86,15 @@ export default function AddApartmentModal({ onAdded }: Props) {
           >
             <Input />
           </Form.Item>
-          <Form.Item name="price" label="Price" rules={[{ required: true }]}>
+
+          <Form.Item
+            name="price"
+            label="Price"
+            rules={[{ required: true }]}
+          >
             <InputNumber style={{ width: "100%" }} />
           </Form.Item>
+
           <Form.Item
             name="bedrooms"
             label="Bedrooms"
@@ -89,6 +102,7 @@ export default function AddApartmentModal({ onAdded }: Props) {
           >
             <InputNumber style={{ width: "100%" }} />
           </Form.Item>
+
           <Form.Item
             name="bathrooms"
             label="Bathrooms"
@@ -96,10 +110,19 @@ export default function AddApartmentModal({ onAdded }: Props) {
           >
             <InputNumber style={{ width: "100%" }} />
           </Form.Item>
-          <Form.Item name="area" label="Area (sqm)" rules={[{ required: true }]}>
+
+          <Form.Item
+            name="area"
+            label="Area (sqm)"
+            rules={[{ required: true }]}
+          >
             <InputNumber style={{ width: "100%" }} />
           </Form.Item>
-          <Form.Item name="description" label="Description">
+
+          <Form.Item
+            name="description"
+            label="Description"
+          >
             <Input.TextArea />
           </Form.Item>
         </Form>

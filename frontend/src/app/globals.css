@@ -29,3 +29,58 @@ button {
 button:hover {
   opacity: 0.9;
 }
+
+.ant-modal {
+  max-width: 500px;
+  width: 90%;
+  border-radius: var(--border-radius);
+  background-color: var(--card-background);
+
+  @media (max-width: 640px) {
+    width: 95%;
+  }
+
+  .ant-modal-header {
+    border-bottom: none;
+    padding: 0.5rem 1rem;
+
+    h3 {
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin: 0;
+
+      @media (max-width: 640px) {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .ant-modal-body {
+    padding: 1rem 1.5rem;
+
+    .ant-form-item-label > label {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .ant-input,
+    .ant-input-number,
+    .ant-input-textarea {
+      border-radius: var(--border-radius);
+      border: 1px solid #d1d5db;
+      padding: 0.5rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  .ant-modal-footer {
+    display: flex;
+    justify-content: center !important;
+    gap: 1rem;
+    border-top: none;
+    margin-top: 0;
+    flex-wrap: wrap;
+  }
+}
+
