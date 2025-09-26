@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { getApartments } from "../services/apartment.service";
-import { Apartment } from "../types/apartment";
+import { useEffect, useState } from 'react';
+import { getApartments } from '../services/apartment.service';
+import { Apartment } from '../types/apartment';
 
 export function useApartments(limit: number) {
   const [apartments, setApartments] = useState<Apartment[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     setPage(1);
@@ -36,6 +36,6 @@ export function useApartments(limit: number) {
     hasMore,
     setSearch,
     setApartments,
-    setPage
+    setPage,
   };
 }

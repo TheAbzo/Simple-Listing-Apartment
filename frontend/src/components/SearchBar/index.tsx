@@ -1,31 +1,39 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Input, Space, Button } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import { useState, useEffect } from 'react';
+import { Input, Space, Button } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import styles from './searchBar.module.scss';
 
 interface Props {
-  onSearch: (query: string) => void; // Single search string
+  onSearch: (query: string) => void;
+  debounceTime?: number;
 }
 
-export default function SearchBar({ onSearch }: Props) {
-  const [query, setQuery] = useState(""); 
+export default function SearchBar({ onSearch, debounceTime = 500 }: Props) {
+  const [query, setQuery] = useState('');
 
-  const handleSearch = () => {
-    onSearch(query); 
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      onSearch(query.trim());
+    }, debounceTime);
+
+    return () => clearTimeout(handler);
+  }, [query, debounceTime, onSearch]);
+
+  const handleSearchClick = () => {
+    onSearch(query.trim());
   };
 
   return (
-    <Space style={{ marginBottom: "1.5rem" }}>
+    <Space className={styles.searchForm}>
       <Input
         placeholder="Search by name, unit number, or project..."
         prefix={<SearchOutlined />}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        onPressEnter={handleSearch}
-        style={{ width: 300 }}
       />
-      <Button type="primary" onClick={handleSearch}>
+      <Button type="primary" onClick={handleSearchClick}>
         Search
       </Button>
     </Space>

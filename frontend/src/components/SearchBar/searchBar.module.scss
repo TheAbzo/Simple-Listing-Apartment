@@ -5,13 +5,15 @@
   flex-wrap: wrap;
 
   input {
-    flex: 1;
+    min-width: 250px;
     padding: 0.6rem 1rem;
-    border: 1px solid #d1d5db; 
+    border: 1px solid #d1d5db;
     border-radius: var(--border-radius);
     font-size: 0.95rem;
     outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
 
     &:focus {
       border-color: var(--primary-color);
@@ -27,7 +29,9 @@
     color: var(--card-background);
     font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s ease, opacity 0.2s ease;
+    transition:
+      background 0.2s ease,
+      opacity 0.2s ease;
 
     &:hover {
       opacity: 0.9;

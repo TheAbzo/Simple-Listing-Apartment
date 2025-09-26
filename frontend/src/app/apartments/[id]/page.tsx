@@ -1,8 +1,8 @@
-import { fetchApartment } from "@/lib/api";
-import { Apartment } from "@/types/apartment";
-import Image from "next/image";
-import styles from "./details.module.scss";
-import BackButton from "@/components/BackComponent";
+import { fetchApartment } from '@/lib/api';
+import { Apartment } from '@/types/apartment';
+import Image from 'next/image';
+import styles from './details.module.scss';
+import BackButton from '@/components/BackComponent';
 
 interface ApartmentPageProps {
   params: { id: string };
@@ -12,13 +12,13 @@ export default async function ApartmentDetails({ params }: ApartmentPageProps) {
   const apartment: Apartment = await fetchApartment(params.id);
 
   const plural = (count: number, singular: string, plural?: string) =>
-    count === 1 ? singular : plural || singular + "s";
+    count === 1 ? singular : plural || singular + 's';
 
   return (
     <div className={styles.container}>
       <div className={styles.left}>
         <Image
-          src={"/images/apartment.jpg"}
+          src={'/images/apartment.jpg'}
           alt={apartment.unitName}
           width={320} // slightly bigger
           height={320}
@@ -34,19 +34,17 @@ export default async function ApartmentDetails({ params }: ApartmentPageProps) {
 
         <div className={styles.details}>
           <span>
-            {apartment.bedrooms} {plural(apartment.bedrooms, "Bedroom")}
+            {apartment.bedrooms} {plural(apartment.bedrooms, 'Bedroom')}
           </span>
           <span>
-            {apartment.bathrooms} {plural(apartment.bathrooms, "Bathroom")}
+            {apartment.bathrooms} {plural(apartment.bathrooms, 'Bathroom')}
           </span>
           <span>Area: {apartment.area} m²</span>
         </div>
 
-        {apartment.description && (
-          <p className={styles.description}>{apartment.description}</p>
-        )}
+        {apartment.description && <p className={styles.description}>{apartment.description}</p>}
 
-       <BackButton className={styles.backButton} />
+        <BackButton className={styles.backButton} />
       </div>
     </div>
   );

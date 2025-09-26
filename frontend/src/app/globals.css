@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #3B82F6;       /* Buttons / Highlights */
-  --card-background: #FFFFFF;      /* Card / Page Background */
+  --primary-color: #3b82f6; /* Buttons / Highlights */
+  --card-background: #ffffff; /* Card / Page Background */
   --card-shadow: rgba(0, 0, 0, 0.05);
-  --text-main: #111827;            /* Dark gray / almost black */
-  --text-secondary: #6B7280;       /* Medium gray */
+  --text-main: #111827; /* Dark gray / almost black */
+  --text-secondary: #6b7280; /* Medium gray */
   --border-radius: 0.5rem;
 }
 
@@ -83,4 +83,3 @@ button:hover {
     flex-wrap: wrap;
   }
 }
-

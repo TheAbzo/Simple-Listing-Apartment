@@ -1,4 +1,4 @@
-    export interface Project {
+export interface Project {
   id: string;
   name: string;
   location?: string | null;
@@ -19,7 +19,7 @@ export interface Apartment {
   description?: string | null;
   // Prisma Json → backend will return array/object
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  images: any; 
+  images: any;
   createdAt: string;
   updatedAt: string;
 }

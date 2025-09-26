@@ -1,22 +1,18 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Toaster } from "react-hot-toast"; 
+import './globals.css';
+import type { Metadata } from 'next';
+import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
-  title: "Apartments App",
-  description: "Simple listing app",
+  title: 'Apartments App',
+  description: 'Simple listing app',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-          {children}
-          <Toaster position="top-right" />
+        {children}
+        <Toaster position="top-right" />
       </body>
     </html>
   );

@@ -3,12 +3,12 @@
   flex-direction: row;
   gap: 2rem;
   max-width: 900px;
-  margin: 2rem auto 2rem 1rem; 
+  margin: 2rem auto 2rem 1rem;
   padding: 1rem;
 }
 
 .left {
-  flex: 1.2; 
+  flex: 1.2;
   min-width: 280px;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .right {
-  flex: 2; 
+  flex: 2;
   display: flex;
   flex-direction: column;
 
@@ -50,7 +50,7 @@
     color: var(--text-main);
     margin-top: 0.5rem;
 
-    .button{
+    .button {
       margin-top: 18%;
       width: 52%;
     }
@@ -64,18 +64,17 @@
   }
 
   .backButton {
-  background-color: var(--primary-color);
-  color: var(--card-background);
-  border: none;
-  border-radius: var(--border-radius);
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  width: 42%;
-  margin-top: 4.5rem;
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: 42%;
+    margin-top: 4.5rem;
 
-
-  &:hover {
-    opacity: 0.9;
+    &:hover {
+      opacity: 0.9;
+    }
   }
-}
 }
