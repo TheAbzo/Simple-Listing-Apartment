@@ -158,9 +158,9 @@ docker compose down
 ```
 
 ## 🧪 Testing & Validation
-- Form validation for creating/adding apartments.
-- Backend tested with 2 suites for routes & services.
-- ✅ All tests pass in development.
+- Frontend: simple **form validation** for creating/adding apartments.
+- Backend: tested with **2 suites** for routes & services. 
+- ✅ All tests pass in **development**.
 <img width="400" height="145" alt="image" src="https://github.com/user-attachments/assets/22182bad-b6eb-47fa-9473-ece6dd5d4371" />
 
 
