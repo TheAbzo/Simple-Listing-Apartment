@@ -8,8 +8,10 @@
     "strict": true,
     "skipLibCheck": true,
     "outDir": "dist",
+    "rootDir": "src",
     "resolveJsonModule": true,
     "sourceMap": true
   },
-  "include": ["src/**/*", "tests/**/*", "prisma/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests", "prisma"]
 }
