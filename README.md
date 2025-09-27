@@ -64,7 +64,7 @@ docker compose down
 
 - 🧪 **Seeded Database:** Randomized seed data to simulate real-world listings.
 
-- 🔍** Search & Filter Functionality:** Quickly find apartments by unit name, unit number, or associated project.
+- 🔍 **Search & Filter Functionality:** Quickly find apartments by unit name, unit number, or associated project.
 
 - 🐳 **Dockerized:** One-command setup using Docker and Docker Compose.
 
