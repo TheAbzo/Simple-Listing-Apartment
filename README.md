@@ -158,8 +158,11 @@ docker compose down
 ```
 
 ## 🧪 Testing & Validation
-- Fully tested backend **apartment routes** & **services **with 2 test suites.
-- Simple **form validation** for creating/adding new apartment.
+- Form validation for creating/adding apartments.
+- Backend tested with 2 suites for routes & services.
+- ✅ All tests pass in development.
+<img width="400" height="145" alt="image" src="https://github.com/user-attachments/assets/22182bad-b6eb-47fa-9473-ece6dd5d4371" />
+
 
 
 
