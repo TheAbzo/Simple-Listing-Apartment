@@ -35,17 +35,19 @@ PORT=3000
 DATABASE_URL="postgresql://postgres:postgres@postgres:5432/apartments_app_db?schema=public"
 PORT=4000
 ```
-4. ⚠️ Make sure to adjust PostgreSQL credentials in the docker-compose.yml and .env files if your password is different from postgres.
+4. ⚠️ *Make sure to adjust PostgreSQL credentials in the docker-compose.yml and .env files if your password is different from postgres.*
 
 5. Run the application with Docker Compose:
 ```
 docker compose up -d --build
 ```
+6. ⚠️ *Seeding 300+ apartments may take **~30 seconds after Docker Compose finishes**. Please wait patiently.*
+
 This will:
 - Start the PostgreSQL database
 - Build and start the backend
-- Run migrations and seed the database
 - Build and start the frontend
+- Run migrations and seed the database 
 - Access the app:
 -   Frontend: http://localhost:3000
 -   Backend API: http://localhost:4000
