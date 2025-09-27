@@ -60,7 +60,7 @@ docker compose down
 
 - 📱 **Responsive:** Optimized UI/UX for desktop, tablet, and mobile views.
 
-- 🔁 **Infinite Scrolling:** Effortless apartment browsing with pagination handled via infinite scrolling.(WIP)
+- 🔁 **Infinite Scrolling:** Effortless apartment browsing with pagination handled via infinite scrolling.
 
 - 🧪 **Seeded Database:** Randomized seed data to simulate real-world listings.
 
@@ -158,15 +158,6 @@ docker compose down
 ## 🧪 Testing & Validation
 - Fully tested backend **apartment routes** & **services **with 2 test suites.
 - Simple **form validation** for creating/adding new apartment.
-
-
-### 🔒 Security Considerations
-- Prisma ORM ensures parameterized queries to prevent SQL injection.
-- No direct SQL queries are written in raw form unless fully sanitized.
-- Environment variables are managed securely via .env files and not exposed in client-side code.
-
-### 📱 Responsiveness
-The app UI is fully responsive and adapts to multiple screens.
 
 
 
